@@ -45,7 +45,16 @@ def fetch(show, exact=False, ep=None):
     else:
         data = resp.replace('<pre>', '').splitlines()
         for line in data:
-            k, v = line.split('@')
+      ne in data:
+            try:
+                k, v = line.split('@')
+                print line
+            except ValueError, err:
+                try:
+                    k, v = line.split('@@') #Latest Episode@@blah
+                except ValueError, err: #"Ended@"
+                    k = line.replace('@',"")
+                    v = ""
             # TODO: use datetimeobj for dates
             show_info[k] = (v.split(' | ') if ' | ' in v else
                             (v.split('^') if '^' in v else v))
