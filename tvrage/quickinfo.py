@@ -28,8 +28,7 @@
 from urllib2 import urlopen, URLError, quote
 from util import _fetch
 from exceptions import ShowNotFound
-
-BASE_URL = 'http://services.tvrage.com/tools/quickinfo.php'
+s/tools/quickinfo.php'
 
 
 def fetch(show, exact=False, ep=None):
@@ -47,11 +46,15 @@ def fetch(show, exact=False, ep=None):
         for line in data:
       ne in data:
             try:
-                k, v = line.split('@')
-                print line
+                if '@@' in line:
+                    line = line.replace('@@','@')
+                    k, v = line.split('@')
+                    v = '@' + v
+                else:
+                    k, v = line.split('@')
+
             except ValueError, err:
-                try:
-                    k, v = line.split('@@') #Latest Episode@@blah
+
                 except ValueError, err: #"Ended@"
                     k = line.replace('@',"")
                     v = ""
