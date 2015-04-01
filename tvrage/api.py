@@ -115,8 +115,8 @@ class Show(object):
     """represents a TV show description from tvrage.com
 
     this class is kind of a wrapper around the following of tvrage's xml feeds:
-    * http://www.tvrage.com/feeds/search.php?show=SHOWNAME
-    * http://www.tvrage.com/feeds/episode_list.php?sid=SHOWID
+    * http://services.tvrage.com/feeds/search.php?show=SHOWNAME
+    * http://services.tvrage.com/feeds/episode_list.php?sid=SHOWID
     """
 
     def __init__(self, name):
@@ -158,7 +158,7 @@ class Show(object):
                 snum = int(season.attrib['no'])
             except KeyError:
                 pass  # TODO: adding handeling for specials and movies
-                # bsp: http://www.tvrage.com/feeds/episode_list.php?sid=3519
+                # bsp: http://services.tvrage.com/feeds/episode_list.php?sid=3519
             else:
                 self.episodes[snum] = Season()
                 for episode in season:

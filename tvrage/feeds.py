@@ -34,7 +34,7 @@ except ImportError:
     import xml.etree.ElementTree as et
 
 
-BASE_URL = 'http://www.tvrage.com/feeds/%s.php?%s=%s'
+BASE_URL = 'http://services.tvrage.com/feeds/%s.php?%s=%s'
 
 
 def _fetch_xml(url, node=None):
